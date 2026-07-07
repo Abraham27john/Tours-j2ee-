@@ -12,8 +12,11 @@ import com.dcl.tours.dto.Package;
 import com.dcl.tours.utility.Connector;
 
 public class PackageDAOImpl implements PackageDAO {
+	Connection con = null;
+	public PackageDAOImpl() {
+		con =  Connector.requestConnection();
+	}
 	
-	Connection con = Connector.requestConnection();
 
 	@Override
 	public void createPackage(Package p) {
@@ -39,6 +42,7 @@ public class PackageDAOImpl implements PackageDAO {
 			ps.setString(1, p.getPname());
 			ps.setDouble(2, p.getPrice());
 			ps.setInt(3, p.getNo_of_days());
+			ps.setInt(4, p.getPid());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
