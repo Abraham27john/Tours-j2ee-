@@ -2,18 +2,19 @@ package com.dcl.tours.daoInterfaces;
 
 import java.util.List;
 
-import com.dcl.tours.dto.Location;
+import com.dcl.tours.dto.LocationDTO;
+import com.dcl.tours.dto.LocationDTO;
 
 public interface LocationDAO {
 	
-	public void createLocation(Location l);
+	public void createLocation(LocationDTO l);
 	
-	public void updateLocation(Location l);
+	public void updateLocation(LocationDTO l);
 	
 	public void deleteLocation(Integer id);
 	
-	public List<Location> getAllLocation();
+	public List<LocationDTO> getAllLocation();
 	
-	public List<Location> getLocationById(Integer id);
+	public List<LocationDTO> getLocationById(Integer id);
 
 }

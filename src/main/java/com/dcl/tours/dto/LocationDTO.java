@@ -1,6 +1,6 @@
 package com.dcl.tours.dto;
 
-public class Location {
+public class LocationDTO {
 	
 	private Integer lid;
 	

@@ -1,6 +1,6 @@
 package com.dcl.tours.dto;
 
-public class Package {
+public class PackageDTO {
 	
 	private Integer pid;
 	
@@ -34,13 +34,15 @@ public class Package {
 		this.price = price;
 	}
 
-	public Integer getNo_of_days() {
+	public Integer getno_of_days() {
 		return no_of_days;
 	}
 
-	public void setNo_of_days(Integer no_of_days) {
+	public void setno_of_days(Integer no_of_days) {
 		this.no_of_days = no_of_days;
 	}
+
+	
 	
 	
 
