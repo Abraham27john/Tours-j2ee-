@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface PackageDAO {
 	
-	public void createPackage(Package p);
+	public void createPackage(com.dcl.tours.dto.Package p);
 	
-	public void updatePackage(Package p);
+	public void updatePackage(com.dcl.tours.dto.Package p);
 	
 	public void deletePackage(Integer id);
 	
-	public List<Package> getAllPackage();
+	public List<com.dcl.tours.dto.Package> getAllPackage();
 	
-	public List<Package> getPackageById(Integer id);
+	public List<com.dcl.tours.dto.Package> getPackageById(Integer id);
 
 }
