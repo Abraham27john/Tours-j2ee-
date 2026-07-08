@@ -74,6 +74,7 @@ public class PackageDAOImpl implements PackageDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
+				p = new Package();
 				p.setPid(rs.getInt("pid"));
 				p.setPname(rs.getString("pname"));
 				p.setPrice(rs.getDouble("price"));
@@ -99,6 +100,7 @@ public class PackageDAOImpl implements PackageDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
+				p = new Package();
 				p.setPid(rs.getInt("pid"));
 				p.setPname(rs.getString("pname"));
 				p.setPrice(rs.getDouble("price"));

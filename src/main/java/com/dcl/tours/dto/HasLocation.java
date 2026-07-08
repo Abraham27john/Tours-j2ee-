@@ -1,6 +1,6 @@
 package com.dcl.tours.dto;
 
-public class Has_Location {
+public class HasLocation {
 	
 	private Integer hlid;
 	
