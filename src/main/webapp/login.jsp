@@ -479,37 +479,21 @@ font-size:34px;
 Login to continue your journey.
 </p>
 
-<form>
+<form action="login" method="post">
 
-<div class="inputBox">
+    <div class="inputBox">
+        <label>Email Address *</label>
+        <input type="email" name="email" placeholder="Enter Email">
+    </div>
 
-<label>Email Address *</label>
+    <div class="inputBox">
+        <label>Password *</label>
+        <input type="password" name="password" placeholder="Enter Password">
+    </div>
 
-<input type="email" placeholder="Enter Email">
-
-</div>
-
-<div class="inputBox">
-
-<label>Password *</label>
-
-<input type="password" placeholder="Enter Password">
-
-</div>
-
-<div class="row">
-
-
-
-<a href="#">Forgot Password?</a>
-
-</div>
-
-<button class="login">
-
-Login
-
-</button>
+    <button type="submit" class="login">
+        Login
+    </button>
 
 </form>
 
@@ -523,56 +507,38 @@ Login
 Create your tourism account.
 </p>
 
-<form>
+<form action="signup" method="post">
 
-<div class="inputBox">
+    <div class="inputBox">
+        <label>Full Name *</label>
+        <input type="text" name="name" placeholder="Full Name">
+    </div>
 
-<label>Full Name *</label>
+    <div class="inputBox">
+        <label>Phone Number *</label>
+        <input type="text" name="phone" placeholder="Phone Number">
+    </div>
 
-<input type="text" placeholder="Full Name">
+    <div class="inputBox">
+        <label>Email Address *</label>
+        <input type="email" name="email" placeholder="Email">
+    </div>
 
-</div>
+    <div class="inputBox">
+        <label>Password *</label>
+        <input type="password" name="password" placeholder="Password">
+    </div>
 
-<div class="inputBox">
+    <div class="inputBox">
+        <label>Confirm Password *</label>
+        <input type="password" name="confirm" placeholder="Confirm Password">
+    </div>
 
-<label>Phone Number *</label>
-
-<input type="text" placeholder="Phone Number">
-
-</div>
-
-<div class="inputBox">
-
-<label>Email Address *</label>
-
-<input type="email" placeholder="Email">
-
-</div>
-
-<div class="inputBox">
-
-<label>Password *</label>
-
-<input type="password" placeholder="Password">
-
-</div>
-
-<div class="inputBox">
-
-<label>Confirm Password *</label>
-
-<input type="password" placeholder="Confirm Password">
-
-</div>
-
-<button class="register">
-
-Create Account
-
-</button>
+    <button type="submit" class="register">
+        Create Account
+    </button>
 
 </form>
-
 </div>
 
 </section>
