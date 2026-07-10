@@ -95,7 +95,7 @@ public class UserDAOImpl implements UserDAO{
 			while(rs.next()) {
 				u=new User();
 				u.setUid(rs.getInt("uid"));
-				u.setUname(rs.getString("unmae"));
+				u.setUname(rs.getString("uname"));
 				u.setPhno(rs.getString("phno"));
 				u.setEmail(rs.getString("email"));
 				u.setPassword(rs.getString("password"));
@@ -122,7 +122,7 @@ public class UserDAOImpl implements UserDAO{
 			while(rs.next()) {
 				u=new User();
 				u.setUid(rs.getInt("uid"));
-				u.setUname(rs.getString("unmae"));
+				u.setUname(rs.getString("uname"));
 				u.setPhno(rs.getString("phno"));
 				u.setEmail(rs.getString("email"));
 				u.setPassword(rs.getString("password"));
@@ -135,6 +135,73 @@ public class UserDAOImpl implements UserDAO{
 		}
 		
 		return userlist;
+	}
+
+	@Override
+		public User getUserByEmail(String email) {
+
+			User u = null;
+
+			String query = "select * from users where email=?";
+
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, email);
+
+				ResultSet rs = ps.executeQuery();
+
+				if(rs.next()) {
+					u = new User();
+
+					u.setUid(rs.getInt("uid"));
+					u.setUname(rs.getString("uname"));
+					u.setPhno(rs.getString("phno"));
+					u.setEmail(rs.getString("email"));
+					u.setPassword(rs.getString("password"));
+				}
+
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+
+			return u;
+		}
+	
+
+	@Override
+	public User getUserByEmailAndPassword(String email, String password) {
+
+		User u = null;
+
+		String query = "select * from users where email=? and password=?";
+
+		try {
+
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, email);
+			ps.setString(2, password);
+
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+
+				u = new User();
+
+				u.setUid(rs.getInt("uid"));
+				u.setUname(rs.getString("uname"));
+				u.setPhno(rs.getString("phno"));
+				u.setEmail(rs.getString("email"));
+				u.setPassword(rs.getString("password"));
+			}
+
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return u;
 	}
 
 }

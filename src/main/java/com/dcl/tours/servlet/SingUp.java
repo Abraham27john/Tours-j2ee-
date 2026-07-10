@@ -1,10 +1,5 @@
 package com.dcl.tours.servlet;
-
-public class Dummy {
-
-
-
-	
+public class SingUp {
 
 	
 }
