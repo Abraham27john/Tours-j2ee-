@@ -19,5 +19,7 @@ public interface UserDAO {
 	public User getUserByEmail(String email);
 
 	public User getUserByEmailAndPassword(String email,String password);
+	
+	boolean updatePassword(String email, String password);
 
 }
