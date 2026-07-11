@@ -1,6 +1,5 @@
 package com.dcl.tours.servlet;
 
-
 import java.io.IOException;
 
 import com.dcl.tours.daoImplClasses.UserDAOImpl;
@@ -15,44 +14,41 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/login")
-public class login extends HttpServlet{
+public class login extends HttpServlet {
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req,
+            HttpServletResponse resp)
+            throws ServletException, IOException {
 
-		UserDAO udao = new UserDAOImpl();
+        UserDAO udao = new UserDAOImpl();
 
-		User login = udao.getUserByEmailAndPassword(
-				req.getParameter("email"),
-				req.getParameter("password"));
+        User login = udao.getUserByEmailAndPassword(
+                req.getParameter("email"),
+                req.getParameter("password"));
 
-		if(login != null) {
+        if (login != null) {
 
-			HttpSession session = req.getSession();
+            HttpSession session = req.getSession();
 
-			session.setAttribute("user", login);
+            session.setAttribute("user", login);
 
-			if(login.getUid() == 1) {
+            if (login.getUid() == 1) {
 
-				resp.sendRedirect("admin.jsp");
+                resp.sendRedirect("admin.jsp");
 
-			}
-			else {
+            } else {
 
-				resp.sendRedirect("home.jsp");
+                resp.sendRedirect("home.jsp");
+            }
 
-			}
+        } else {
 
-		}
-		else {
+            req.setAttribute("loginError",
+                    "Invalid Email or Password.");
 
-			req.setAttribute("loginError", "Invalid Email or Password!");
-
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
-
-		}
-
-	}
-
+            req.getRequestDispatcher("index.jsp")
+                    .forward(req, resp);
+        }
+    }
 }

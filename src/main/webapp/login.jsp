@@ -490,12 +490,16 @@ Login to continue your journey.
         <label>Password *</label>
         <input type="password" name="password" placeholder="Enter Password">
     </div>
+
 <div class="row">
 
 
 <a href="#">Forgot Password?</a>
 
 </div>
+    <div class="row">
+    <a href="forgotPassword.jsp">Forgot Password?</a>
+    </div>
     <button type="submit" class="login">
         Login
     </button>
