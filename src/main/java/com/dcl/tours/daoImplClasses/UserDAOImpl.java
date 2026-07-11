@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public void createUser(User u) {
-		String query="Insert into users(uname,phno,email,password) values(?,?,?,?)";
+		String query="Insert into user(uname,phno,email,password) values(?,?,?,?)";
 		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement(query);
@@ -43,7 +43,7 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public void updateUser(User u) {
 		// TODO Auto-generated method stub
-		String query="Update users set uname=?, phno=?, email=?, password=?, where uid=?";
+		String query="Update user set uname=?, phno=?, email=?, password=? where uid=?";
 		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement(query);
@@ -67,7 +67,7 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public void deleteUser(Integer u) {
 		// TODO Auto-generated method stub
-		String query="delete from users where uid=?";
+		String query="delete from user where uid=?";
 		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement(query);
@@ -88,14 +88,14 @@ public class UserDAOImpl implements UserDAO{
 	public List<User> getAllUser() {
 		List<User> userlist=new ArrayList<>();
 		User u=null;
-		String query="select * from users";
+		String query="select * from user";
 		try {
 			PreparedStatement ps=con.prepareStatement(query);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 				u=new User();
 				u.setUid(rs.getInt("uid"));
-				u.setUname(rs.getString("unmae"));
+				u.setUname(rs.getString("uname"));
 				u.setPhno(rs.getString("phno"));
 				u.setEmail(rs.getString("email"));
 				u.setPassword(rs.getString("password"));
@@ -114,7 +114,7 @@ public class UserDAOImpl implements UserDAO{
 	public List<User> getUserById(Integer id) {
 		List<User> userlist=new ArrayList<>();
 		User u=null;
-		String query="select * from users where uid=?";
+		String query="select * from user where uid=?";
 		try {
 			PreparedStatement ps=con.prepareStatement(query);
 			ps.setInt(1, id);
@@ -122,7 +122,7 @@ public class UserDAOImpl implements UserDAO{
 			while(rs.next()) {
 				u=new User();
 				u.setUid(rs.getInt("uid"));
-				u.setUname(rs.getString("unmae"));
+				u.setUname(rs.getString("uname"));
 				u.setPhno(rs.getString("phno"));
 				u.setEmail(rs.getString("email"));
 				u.setPassword(rs.getString("password"));
@@ -135,6 +135,73 @@ public class UserDAOImpl implements UserDAO{
 		}
 		
 		return userlist;
+	}
+
+	@Override
+		public User getUserByEmail(String email) {
+
+			User u = null;
+
+			String query = "select * from user where email=?";
+
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, email);
+
+				ResultSet rs = ps.executeQuery();
+
+				if(rs.next()) {
+					u = new User();
+
+					u.setUid(rs.getInt("uid"));
+					u.setUname(rs.getString("uname"));
+					u.setPhno(rs.getString("phno"));
+					u.setEmail(rs.getString("email"));
+					u.setPassword(rs.getString("password"));
+				}
+
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			}
+
+			return u;
+		}
+	
+
+	@Override
+	public User getUserByEmailAndPassword(String email, String password) {
+
+		User u = null;
+
+		String query = "select * from user where email=? and password=?";
+
+		try {
+
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, email);
+			ps.setString(2, password);
+
+			ResultSet rs = ps.executeQuery();
+
+			if(rs.next()) {
+
+				u = new User();
+
+				u.setUid(rs.getInt("uid"));
+				u.setUname(rs.getString("uname"));
+				u.setPhno(rs.getString("phno"));
+				u.setEmail(rs.getString("email"));
+				u.setPassword(rs.getString("password"));
+			}
+
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return u;
 	}
 
 }
