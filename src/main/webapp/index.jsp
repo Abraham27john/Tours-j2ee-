@@ -177,7 +177,10 @@ button:hover {
 
 			<div class="rating">★★★★☆ (4.8)</div>
 
-			<button>View Details</button>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="1">
+    <button type="submit">Book Now</button>
+</form>
 		</div>
 	</div>
 
@@ -204,7 +207,10 @@ button:hover {
 
 			<div class="rating">★★★★☆ (4.5)</div>
 
-			<button>View Details</button>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="2">
+    <button type="submit">Book Now</button>
+</form>
 		</div>
 	</div>
 
@@ -229,8 +235,10 @@ button:hover {
 
 			<div class="rating">★★★★★ (5.0)</div>
 
-			<button>View Details</button>
-		</div>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="3">
+    <button type="submit">Book Now</button>
+</form>		</div>
 	</div>
 
 	<div class="card">
@@ -255,7 +263,10 @@ button:hover {
 
 			<div class="rating">★★★★☆ (4.7)</div>
 
-			<button>View Details</button>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="4">
+    <button type="submit">Book Now</button>
+</form>
 		</div>
 	</div>
 
@@ -281,7 +292,10 @@ button:hover {
 
 			<div class="rating">★★★★★ (5.0)</div>
 
-			<button>View Details</button>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="5">
+    <button type="submit">Book Now</button>
+</form>
 		</div>
 	</div>
 
@@ -309,7 +323,10 @@ button:hover {
 
 			<div class="rating">★★★★★ (5.0)</div>
 
-			<button>View Details</button>
+			<form action="bookPackage.jsp" method="get">
+    <input type="hidden" name="pid" value="6">
+    <button type="submit">Book Now</button>
+</form>
 </section>
 
 

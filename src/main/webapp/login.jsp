@@ -491,12 +491,7 @@ Login to continue your journey.
         <input type="password" name="password" placeholder="Enter Password">
     </div>
 
-<div class="row">
 
-
-<a href="#">Forgot Password?</a>
-
-</div>
     <div class="row">
     <a href="forgotPassword.jsp">Forgot Password?</a>
     </div>
