@@ -46,7 +46,7 @@ public class ForgotPassword extends HttpServlet {
 
             if (updated) {
 
-                req.setAttribute("success",
+                req.setAttribute("success",   
                         "Password Updated Successfully. Please Login.");
 
                 req.getRequestDispatcher("index.jsp")
