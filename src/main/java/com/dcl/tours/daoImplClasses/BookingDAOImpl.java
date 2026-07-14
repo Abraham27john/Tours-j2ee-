@@ -43,7 +43,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 	@Override
 	public void updateBooking(Booking b) {
-		String query = "Update booking set UID=?,PID=?, START_DATE=?, END_DATE=?, where BID=?";
+		String query = "Update booking set UID=?,PID=?, START_DATE=?, END_DATE=? where BID=?";
 		int i = 0;
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
