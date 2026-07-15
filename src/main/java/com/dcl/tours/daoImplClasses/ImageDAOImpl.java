@@ -55,7 +55,7 @@ public class ImageDAOImpl implements ImageDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+      
     }
 
     @Override
@@ -139,7 +139,8 @@ public class ImageDAOImpl implements ImageDAO {
             e.printStackTrace();
         }
 
-        return imageList;
+        return imageList;      
     }
 
-}
+}            
+
