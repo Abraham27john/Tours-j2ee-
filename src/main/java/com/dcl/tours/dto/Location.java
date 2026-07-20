@@ -11,6 +11,25 @@ public class Location {
 	private String description;
 	
 	private String city_name;
+	
+	private String image_path;
+	private Integer pid;
+
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	public String getImage_path() {
+		return image_path;
+	}
+
+	public void setImage_path(String image_path) {
+		this.image_path = image_path;
+	}
 
 	public Integer getLid() {
 		return lid;

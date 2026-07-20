@@ -21,13 +21,15 @@ public class LocationDAOImpl implements LocationDAO {
 
 	@Override
 	public void createLocation(Location l) {
-		String query = "Insert into location value(0, ?, ?, ?, ?)";
+		String query = "Insert into location value(0, ?, ?, ?, ?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, l.getLname());
 			ps.setString(2, l.getAddress());
 			ps.setString(3, l.getDescription());
 			ps.setString(4, l.getCity_name());
+			ps.setString(5, l.getImage_path());
+			ps.setInt(6, l.getPid());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -85,6 +87,8 @@ public class LocationDAOImpl implements LocationDAO {
 				l.setAddress(rs.getString("address"));
 				l.setDescription(rs.getString("description"));
 				l.setCity_name(rs.getString("city_name"));
+				l.setImage_path(rs.getString("image_path"));
+				l.setPid(rs.getInt("pid"));
 				locationList.add(l);
 			}
 		} catch (SQLException e) {
@@ -110,6 +114,7 @@ public class LocationDAOImpl implements LocationDAO {
 				l.setAddress(rs.getString("address"));
 				l.setDescription(rs.getString("description"));
 				l.setCity_name(rs.getString("city_name"));
+				l.setImage_path(rs.getString("image_path"));
 				locationList.add(l);
 			}
 		} catch (SQLException e) {

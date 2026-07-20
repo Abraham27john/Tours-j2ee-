@@ -1,3 +1,10 @@
+<%@page import="com.dcl.tours.dto.Location"%>
+<%@page import="com.dcl.tours.daoImplClasses.LocationDAOImpl"%>
+<%@page import="com.dcl.tours.daoInterfaces.LocationDAO"%>
+<%@page import="com.dcl.tours.dto.Package"%>
+<%@page import="java.util.List"%>
+<%@page import="com.dcl.tours.daoImplClasses.PackageDAOImpl"%>
+<%@page import="com.dcl.tours.daoInterfaces.PackageDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -20,7 +27,7 @@
 
 <!-- Hero Section -->
 <section class="relative h-[550px] bg-cover bg-center"
-    style="background-image:url('https://c1.wallpaperflare.com/preview/988/16/35/sunset-kerala-aleppay-boat.jpg')">
+    style="background-image:url(https://t4.ftcdn.net/jpg/06/45/81/21/360_F_645812112_FnMyfr9UHbUrddvOtgHZiBuFLJ4tjpEx.jpg)">
 
     <div class="absolute inset-0 bg-black/50"></div>
 
@@ -35,11 +42,7 @@
             your next unforgettable journey starts here.
         </p>
 
-        <button1
-            class="mt-8 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-full font-semibold text-lg transition duration-300">
-            Explore Packages
-        </button1>
-
+       
     </div>
 
 
@@ -83,40 +86,44 @@ header p {
 	font-size: 18px;
 }
 
-.package-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 30px;
-	padding: 40px;
+.package-container{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+    padding:40px;
 }
 
-.card {
-	background: white;
-	border-radius: 15px;
-	overflow: hidden;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-	transition: 0.4s;
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    transition: 0.4s;
+}
+.card:hover{
+transform: translateY(-8px);
 }
 
-.card:hover {
-	transform: translateY(-8px);
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
 }
 
-.card img {
-	width: 100%;
-	height: 220px;
-	object-fit: cover;
-}
-
-.content {
-	padding: 20px;
+.content{
+    padding:20px;
 }
 
 .content h2 {
 	margin-bottom: 10px;
 	color: #222;
+	font-weight:bold;
 }
-
+.content h3{
+font-size:25px;
+font-weight:bold;
+}
 .content p {
 	margin: 8px 0;
 	color: #555;
@@ -151,170 +158,69 @@ width:20%;}
 button:hover {
 	background: green;
 }
+.btn{
+/*border:2px solid red;*/
+padding:10px 30px;
+border-radius:30px;
+margin-left:85px;
+background-color:orange;
+}
+.btn:hover{
+background-color: red;
+}
 </style>
 
-
 <section class="package-container">
+<% PackageDAO pdao=new PackageDAOImpl();
+List<Package> packages=pdao.getAllPackage();
+
+LocationDAO ldao=new LocationDAOImpl();
+List<Location> location=ldao.getAllLocation();
+
+Location floc=null;
+
+for(Package p:packages){
+	for(Location l:location){
+	if(p.getPid()==l.getPid()){
+		floc=l;
+		break;
+	}
+	}
+	if(floc !=null){
+%>
 
 <div class="card">
 		
-		 <img src="https://i.pinimg.com/474x/19/e1/80/19e1802e028a0921fe56820927bf5844.jpg?nii=t"
-                 class="h-60 w-full object-cover">
+		 <img src="<%=request.getContextPath() %>/<%=floc.getImage_path() %>">
 		
 
 		<div class="content">
-			<h2>MUNNAR</h2>
+			<h2>
+			<%=floc.getCity_name() %></h2>
 
-			 <h3 class="text-2xl font-bold mt-2">
-                    Altitude Adjustment
+			 <h3>
+                    <%=p.getPname() %>
                 </h3>
-                <p class="text-slate-600 mt-3">
-                    Tea estates, misty mountains, waterfalls and scenic viewpoints.
+                <p>
+                    <%=floc.getDescription() %>
                 </p>
-			<p>Duration : 5 Days / 4 Nights</p>
+			<p>Duration : <%=p.getNo_of_days() %> Days</p>
 
-			<p class="price ">₹15,499</p>
+			<p class="price "><%=p.getPrice() %></p>
 
 			<div class="rating">★★★★☆ (4.8)</div>
 
-			<button>View Details</button>
+			<form action="location.jsp" method="post">
+			<input type="hidden" name="package_id" value="<%=floc.getPid()%>">
+			<input type="submit" value="View Details" class="btn">
+			</form>
 		</div>
 	</div>
-
-	<div class="card">
-		 <img src="https://i.pinimg.com/736x/2a/20/d1/2a20d147aab2a7afa7ed29562fe571da.jpg"
-                 class="h-60 w-full object-cover">
-
-
-		<div class="content">
-			<h2> GOA</h2>
-
-			
-                <h3 class="text-2xl font-bold mt-2">
-                     Beach Bliss
-                     
-                </h3>
-
-                <p class="text-slate-600 mt-3">
-                    Relax on pristine beaches, enjoy nightlife and thrilling water sports.
-                </p>
-			<p>Duration : 4 Days / 3 Nights</p>
-
-			<p class="price">₹12,999</p>
-
-			<div class="rating">★★★★☆ (4.5)</div>
-
-			<button>View Details</button>
-		</div>
-	</div>
-
-	<div class="card">
-		  <img src="https://media.istockphoto.com/id/172124032/photo/mysore-palace-at-dusk.jpg?s=612x612&w=0&k=20&c=paO74C_dVsY14IbK0RNqs0TD-lSteQy-AW5CnQFEb_4="
-                 class="h-60 w-full object-cover">
-
-
-		<div class="content">
-			<h2>MYSORE</h2>
-
-			<h3 class="text-2xl font-bold mt-2">
-				Mysore, Karnataka
-			</h3>
-			<p class="text-slate-600 mt-3">
-                    Explore grand palaces, gardens and Karnataka's royal heritage.
-                </p>
-
-			<p>Duration : 3 Days / 2 Nights</p>
-
-			<p class="price">₹8,999</p>
-
-			<div class="rating">★★★★★ (5.0)</div>
-
-			<button>View Details</button>
-		</div>
-	</div>
-
-	<div class="card">
-		 <img src="https://preview.redd.it/aesthetic-chayakudi-spots-around-kochi-v0-izie5oikxztg1.jpg?width=640&crop=smart&auto=webp&s=aa4bfb289092d48ba91fae45a3320d2d4c6470ab"
-                 class="h-60 w-full object-cover">
-		<div class="content">
-			<h2>KOCHI
-</h2>
-
-			<h3 class="text-2xl font-bold">
-                    Coastal Charms
-                </h3>
-
-                <p class="text-slate-600 mt-3">
-                    Discover Chinese fishing nets, spice markets and backwaters.
-                </p>
-
-
-			<p>Duration : 5 Days / 4 Nights</p>
-
-			<p class="price">₹10,999</p>
-
-			<div class="rating">★★★★☆ (4.7)</div>
-
-			<button>View Details</button>
-		</div>
-	</div>
-
-	<div class="card">
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuoqRM43rL6jWNsQRiqJ0ckhnR2zEUCL_ZycmaOLruWg&s=10"
-                 class="h-60 w-full object-cover">
-
-		<div class="content">
-			<h2>HAMPI</h2>
-
-			
-			 <h3 class="text-2xl font-bold mt-2">
-                    Historic Heritage
-                </h3>
-
-                <p class="text-slate-600 mt-3">
-                    Walk through the timeless ruins of the Vijayanagara Empire.
-                </p>
-
-			<p>Duration : 6 Days / 5 Nights</p>
-
-			<p class="price">₹18,999</p>
-
-			<div class="rating">★★★★★ (5.0)</div>
-
-			<button>View Details</button>
-		</div>
-	</div>
-
-	
-	<div class="card">
-		
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1WKSz8QtL0kLW7cVEYI3evBhmHKhdKnwl5EygB-byBQ&s=10"
-                 class="h-60 w-full object-cover">
-
-
-		<div class="content">
-			<h2>  COORG</h2>
-                <h3 class="text-2xl font-bold">
-                    Coffee & Clouds
-                </h3>
-
-                <p class="text-slate-600 mt-3">
-                    Escape into lush coffee plantations and mist-covered hills.
-                </p>
-
-			<p>Duration : 7 Days / 6 Nights</p>
-
-			<p class="price">₹25,999</p>
-			
-
-			<div class="rating">★★★★★ (5.0)</div>
-
-			<button>View Details</button>
+<%} }%>
 </section>
 
 
 <%@ include file="footer.jsp"%>
-</body>
 
 </body>
 </html>

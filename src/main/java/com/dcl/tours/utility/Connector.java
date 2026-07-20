@@ -10,7 +10,7 @@ public class Connector {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tours_db", "root", "tiger"); //change to your password
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tours_db", "root", "punith123"); //change to your password
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
