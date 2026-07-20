@@ -34,7 +34,7 @@ public class BookingServlet extends HttpServlet {
         BookingDAO bdao = new BookingDAOImpl();
         bdao.createBooking(booking);
         req.setAttribute("success", "Package Booked Successfully.");
-        req.getRequestDispatcher("home.jsp").forward(req, resp);
+        req.getRequestDispatcher("UserDashboard").forward(req, resp);
 
     }
 
